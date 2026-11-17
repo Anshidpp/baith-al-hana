@@ -1,15 +1,26 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import TopBar from "@/components/TopBar";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import Placeholder from "@/components/Placeholder";
 import Icon from "@/components/Icon";
 import Categories from "@/components/Categories";
 import Divisions from "@/components/Divisions";
 import Channels from "@/components/Channels";
 import T from "@/components/T";
 import { founders, type IconName } from "@/data/content";
+import storefrontImage from "../../assets/imges/about-img/367A6699.jpg";
+import storeInteriorImage from "../../assets/imges/about-img/367A6571.jpg";
+import teamImage from "../../assets/imges/about-img/367A6332.jpg";
+import shelvesImage from "../../assets/imges/about-img/367A6594.jpg";
+import customerImage from "../../assets/imges/about-img/367A6600.jpg";
+import warehouseImage from "../../assets/imges/about-img/367A6680.jpg";
+import founderOneImage from "../../assets/imges/founders/founder1.jpg";
+import founderTwoImage from "../../assets/imges/founders/founder2.png";
+import founderThreeImage from "../../assets/imges/founders/founder3.png";
+import founderFourImage from "../../assets/imges/founders/founder4.jpg";
+
 
 export const metadata: Metadata = {
   title: "About Us | Baith Al Hana Trading Center",
@@ -17,6 +28,7 @@ export const metadata: Metadata = {
 };
 
 const highlights = ["Carefully Selected Products", "Fair and Friendly Service", "Attention to Every Detail"];
+const founderImages = [founderOneImage, founderTwoImage, founderThreeImage, founderFourImage];
 const values: { icon: IconName; title: string; text: string }[] = [
   { icon: "check", title: "Quality First", text: "Carefully selected items you can rely on." },
   { icon: "heart", title: "Friendly Service", text: "A welcoming experience for every customer." },
@@ -32,9 +44,6 @@ export default function AboutPage() {
       <main>
         <section className="page-hero">
           <div className="wrap">
-            <nav className="crumbs" aria-label="Breadcrumb">
-              <Link href="/"><T>Home</T></Link><span aria-hidden="true">/</span><span aria-current="page"><T>About Us</T></span>
-            </nav>
             <h1><T>About Baith Al Hana Trading Center</T></h1>
             <p><T>Cleaning, plastic, paper and household products for homes and businesses, available through retail and wholesale.</T></p>
           </div>
@@ -51,9 +60,9 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="pics">
-              <div className="a"><Placeholder label="About photo: store front" /></div>
-              <div className="b"><Placeholder label="Photo: products" /></div>
-              <div className="c"><Placeholder label="Photo: team" /></div>
+              <div className="a"><Image src={storefrontImage} alt="Baith Al Hana store exterior" fill sizes="(max-width: 1024px) 100vw, 50vw" /></div>
+              <div className="b"><Image src={storeInteriorImage} alt="Inside the Baith Al Hana store" fill sizes="(max-width: 1024px) 50vw, 25vw" /></div>
+              <div className="c"><Image src={teamImage} alt="Baith Al Hana team" fill sizes="(max-width: 1024px) 50vw, 25vw" /></div>
             </div>
           </div>
         </section>
@@ -63,9 +72,11 @@ export default function AboutPage() {
             <h2 id="founders-h"><T>Meet the Founders</T></h2>
             <p className="muted note"><T>The people behind Baith Al Hana.</T></p>
             <div className="founders">
-              {founders.map((f) => (
+              {founders.map((f, index) => (
                 <figure key={f.name} className="founder">
-                  <div className="portrait"><Placeholder label={`Photo: ${f.name}`} /></div>
+                  <div className="portrait">
+                    <Image src={founderImages[index]} alt={f.name} fill sizes="180px" />
+                  </div>
                   <figcaption>
                     <h3><T>{f.name}</T></h3>
                     <p><T>{f.role}</T></p>
@@ -97,9 +108,9 @@ export default function AboutPage() {
           <div className="wrap">
             <h2 id="look-h"><T>A look inside</T></h2>
             <div className="strip">
-              <div><Placeholder label="Photo: shelves" /></div>
-              <div><Placeholder label="Photo: warehouse" /></div>
-              <div><Placeholder label="Photo: customers" /></div>
+              <div><Image src={shelvesImage} alt="Product shelves inside the store" fill sizes="(max-width: 640px) 100vw, 33vw" /></div>
+              <div><Image src={warehouseImage} alt="Baith Al Hana warehouse" fill sizes="(max-width: 640px) 100vw, 33vw" /></div>
+              <div><Image src={customerImage} alt="Customer being assisted in the store" fill sizes="(max-width: 640px) 100vw, 33vw" /></div>
             </div>
           </div>
         </section>

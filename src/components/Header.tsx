@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState, type FormEvent } from "react";
@@ -6,6 +7,8 @@ import { nav } from "@/data/content";
 import { tr } from "@/data/ar";
 import { usePrefs } from "./Prefs";
 import T from "./T";
+import logo from "../assets/imges/main-img/logo.png";
+import whiteLogo from "../assets/imges/main-img/logo_white.png";
 
 const CART_DEMO_COUNT = 2; // demo badge only; replace with real cart state
 
@@ -15,7 +18,7 @@ const Chevron = () => <svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4l
 export default function Header() {
   const path = usePathname();
   const router = useRouter();
-  const { lang } = usePrefs();
+  const { lang, theme } = usePrefs();
   const t = (s: string) => (lang === "ar" ? tr(s) : s);
   const [menu, setMenu] = useState(false);
   const [sub, setSub] = useState<string | null>(null);
@@ -38,8 +41,14 @@ export default function Header() {
     <header className="site-header">
       <div className="wrap wide bar">
         <Link href="/" className="logo" onClick={close} aria-label="Baith Al Hana, home">
-          <span className="mark">LOGO</span>
-          <span><span className="ar">بيت الهنا</span><b>Baith Al Hana</b></span>
+          <Image
+            src={theme === "dark" ? whiteLogo : logo}
+            alt="Baith Al Hana"
+            className="logo-image"
+            width={180}
+            height={56}
+            priority
+          />
         </Link>
 
         <nav id="main-nav" className={menu ? "open" : ""} aria-label={t("Main")}>

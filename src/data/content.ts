@@ -1,9 +1,19 @@
+import type { StaticImageData } from "next/image";
+import allPurposeCleaner from "@/assets/imges/home-products/all purpose cleaner.jpeg";
+import dishwashingLiquid from "@/assets/imges/home-products/dishwashing liqued.jpeg";
+import disposableCups from "@/assets/imges/home-products/Disposable Cups – Bulk Carton.jpg";
+import facialTissue from "@/assets/imges/home-products/Facial Tissue Pack.jpeg";
+import foodContainerSet from "@/assets/imges/home-products/Food Container Set.jpeg";
+import kitchenOrganizer from "@/assets/imges/home-products/Kitchen Organizer.jpeg";
+import kitchenPaperRolls from "@/assets/imges/home-products/Kitchen Paper Rolls.jpg";
+import laundryBasket from "@/assets/imges/home-products/Laundry Basket.jpeg";
+
 // Central content. All products, prices and copy are DEMO placeholders until real data is supplied.
 export type Channel = "retail" | "wholesale";
 export type IconName = "spray" | "box" | "paper" | "home" | "check" | "heart" | "grid" | "users" | "mail" | "phone" | "pin" | "clock";
 
 export interface Category { slug: string; name: string; blurb: string; icon: IconName }
-export interface Product { id: string; name: string; category: string; channels: Channel[]; demoPriceSar?: number }
+export interface Product { id: string; name: string; category: string; channels: Channel[]; image: StaticImageData; demoPriceSar?: number }
 export interface NavItem { label: string; href: string; children?: { label: string; href: string }[] }
 
 export const nav: NavItem[] = [
@@ -39,14 +49,14 @@ export const categories: Category[] = [
 ];
 
 export const products: Product[] = [
-  { id: "p1", name: "All-purpose cleaner", category: "Cleaning", channels: ["retail", "wholesale"], demoPriceSar: 14 },
-  { id: "p2", name: "Dishwashing liquid", category: "Cleaning", channels: ["retail", "wholesale"], demoPriceSar: 9 },
-  { id: "p3", name: "Food container set", category: "Plastic", channels: ["retail"], demoPriceSar: 29 },
-  { id: "p4", name: "Disposable cups, bulk carton", category: "Plastic", channels: ["wholesale"] },
-  { id: "p5", name: "Facial tissue pack", category: "Paper", channels: ["retail", "wholesale"], demoPriceSar: 12 },
-  { id: "p6", name: "Kitchen paper rolls, bulk carton", category: "Paper", channels: ["wholesale"] },
-  { id: "p7", name: "Laundry basket", category: "Household", channels: ["retail"], demoPriceSar: 35 },
-  { id: "p8", name: "Kitchen organizer", category: "Household", channels: ["retail", "wholesale"], demoPriceSar: 24 },
+  { id: "p1", name: "All-purpose cleaner", category: "Cleaning", channels: ["retail", "wholesale"], image: allPurposeCleaner, demoPriceSar: 14 },
+  { id: "p2", name: "Dishwashing liquid", category: "Cleaning", channels: ["retail", "wholesale"], image: dishwashingLiquid, demoPriceSar: 9 },
+  { id: "p3", name: "Food container set", category: "Plastic", channels: ["retail"], image: foodContainerSet, demoPriceSar: 29 },
+  { id: "p4", name: "Disposable cups, bulk carton", category: "Plastic", channels: ["wholesale"], image: disposableCups },
+  { id: "p5", name: "Facial tissue pack", category: "Paper", channels: ["retail", "wholesale"], image: facialTissue, demoPriceSar: 12 },
+  { id: "p6", name: "Kitchen paper rolls, bulk carton", category: "Paper", channels: ["wholesale"], image: kitchenPaperRolls },
+  { id: "p7", name: "Laundry basket", category: "Household", channels: ["retail"], image: laundryBasket, demoPriceSar: 35 },
+  { id: "p8", name: "Kitchen organizer", category: "Household", channels: ["retail", "wholesale"], image: kitchenOrganizer, demoPriceSar: 24 },
 ];
 
 export const divisions = [
@@ -67,8 +77,8 @@ export const careerDivisions: CareerDivision[] = [
 
 // Demo founders. Replace names and roles with real ones.
 export const founders = [
-  { name: "Founder 1 (placeholder)", role: "Role (placeholder)" },
-  { name: "Founder 2 (placeholder)", role: "Role (placeholder)" },
-  { name: "Founder 3 (placeholder)", role: "Role (placeholder)" },
-  { name: "Founder 4 (placeholder)", role: "Role (placeholder)" },
+  { name: "Abdul Muhaimin Alungal", role: "Chairman" },
+  { name: "Abdul variz alungal", role: "CEO" },
+  { name: "Hamad Abdul Razaq Abdul Samad Adam", role: "Saudi Director" },
+  { name: "Muhammed Shameem Abdulbary chakklakunnan", role: "GM" },
 ];

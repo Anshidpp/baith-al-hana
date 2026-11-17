@@ -1,14 +1,16 @@
+import Image from "next/image";
 import T from "./T";
 import Link from "next/link";
 import type { Product } from "@/data/content";
-import Placeholder from "./Placeholder";
 
 export default function ProductCard({ p }: { p: Product }) {
   const retail = p.channels.includes("retail");
   const wholesale = p.channels.includes("wholesale");
   return (
     <article className="pcard">
-      <div className="pimg"><Placeholder label={p.name} /></div>
+      <div className="pimg">
+        <Image src={p.image} alt={p.name} fill sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw" />
+      </div>
       <div className="pbody">
         <span className="tags">
           {retail && <b><T>Retail</T></b>}

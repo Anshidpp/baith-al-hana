@@ -1,6 +1,8 @@
 import T from "./T";
 import Link from "next/link";
+import Image from "next/image";
 import Placeholder from "./Placeholder";
+import heroImage from "../assets/imges/home-img/hero-img.png";
 
 export default function Hero() {
   return (
@@ -16,7 +18,14 @@ export default function Hero() {
         </div>
         <div className="hero-media">
           <div className="blob" aria-hidden="true" />
-          <Placeholder label="Hero photo: product display" />
+           <Image
+            src={heroImage}
+            alt="Baith Al Hana store exterior"
+            fill
+            priority
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="hero-image"
+          />
         </div>
       </div>
     </section>
